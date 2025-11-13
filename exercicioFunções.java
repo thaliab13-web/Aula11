@@ -1,0 +1,152 @@
+import java.util.Scanner;
+
+public class exercicioFunções {
+
+    public static Scanner scanner;
+
+    public static void main(String[] args) throws Exception {
+
+        scanner = new Scanner(System.in);
+
+        int opcao;
+        do {
+            System.out.println("Escolha uma opção abaixo: ");
+            System.out.println("1: imprime100");
+            System.out.println("2: imprimeN");
+            System.out.println("3: nomes5");
+            System.out.println("4: adicao");
+            System.out.println("5: pessoas");
+            System.out.println("6: imparesN");
+            System.out.println("7: tabuada");
+            System.out.println("8: elevado");
+            System.out.println("9: soma1N");
+            System.out.println("10: fibonacciFor");
+            System.out.println("11: fibonacciWhile");
+            System.out.println("12: criarArray");
+            System.out.println("13: unirArrays");
+            System.out.println("14: palindromo");
+            System.out.println("15: primo");
+            System.out.println("16: perfeito");
+            System.out.println("Para sair digite (0)");
+            System.out.print("Qual opção? ");
+            opcao = scanner.nextInt();
+
+            if (opcao < 0 || opcao > 16) {
+                System.out.println("Opção inválida! Digite entre 1 e 16, ou 0 para sair. ");
+            }
+
+            switch (opcao) {
+                case 1:
+                    imprime100();
+                    break;
+                case 2, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16:
+                    System.out.println("\nFunções não implementadas ainda...");
+                    break;
+
+                case 3:
+                    pessoas();
+                    break;
+
+                case 5:
+                    nomes5();
+                    break;
+
+                case 7:
+                    tabuada();
+                break;
+
+                case 0: 
+                System.out.print("Encerrando programa...");
+                break;
+                default:
+                System.out.print("Opção inválida");
+                    break;
+            }
+
+        } while (opcao != 0); // encerra
+
+        scanner.close();
+
+    }
+
+    public static void imprime100() {
+        int n = 0;
+        while (n <= 100) {
+            System.out.print(n + " ");
+            n = n + 1;
+        }
+    }
+
+    public static void imprimeN() {
+    }
+
+    public static void nomes5() {
+
+    }
+
+    public static void adicao() {
+    }
+
+    public static void pessoas() {
+
+        int i, n;
+        System.out.print("Número de pessoas: ");
+        n = scanner.nextInt();
+        String[] pessoas = new String[n];
+        i = 0;
+        while (i < n) {
+            System.out.print("Nome da pessoa " + i + ":");
+            pessoas[i] = scanner.nextLine();
+            System.out.println();
+            i++;
+        }
+        System.out.println("\nPessoas cadastradas: ");
+        i = 0;
+        while (i < n) {
+            System.out.println("\"" + pessoas[i] + "\"");
+            i++;
+        }
+
+    }
+
+    public static void imparesN() {
+    }
+
+    public static void tabuada() {
+        for (int i = 1; i <= 10; i++) {
+            System.out.println("\n Tabuada de " + i);
+            for (int j = 1; j <= 10; j++) {
+                System.out.println(i + " * " + j + " = " + i * j);
+
+            }
+        }
+    }
+
+    public static void elevado() {
+    }
+
+    public static void soma1N() {
+    }
+
+    public static void fibonacciFor() {
+    }
+
+    public static void fibonacciWhile() {
+    }
+
+    public static void criarArray() {
+    }
+
+    public static void unirArrays() {
+    }
+
+    public static void palindromo() {
+    }
+
+    public static void primo() {
+    }
+
+    public static void perfeito() {
+    }
+
+}
