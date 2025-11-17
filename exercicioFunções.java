@@ -39,27 +39,36 @@ public class exercicioFunções {
                 case 1:
                     imprime100();
                     break;
-                case 2, 4, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16:
+
+                case 2:
+                    imprimeN();
+                    break;
+                case 8, 9, 10, 11, 12, 13, 14, 15, 16:
                     System.out.println("\nFunções não implementadas ainda...");
                     break;
 
                 case 3:
-                    pessoas();
+                    nomes5();
+                    break;
+                case 4:
+                    adicao();
                     break;
 
                 case 5:
-                    nomes5();
+                    pessoas();
                     break;
-
+                case 6:
+                    imparesN();
+                    break;
                 case 7:
                     tabuada();
-                break;
+                    break;
 
-                case 0: 
-                System.out.print("Encerrando programa...");
-                break;
+                case 0:
+                    System.out.print("Encerrando programa...");
+                    break;
                 default:
-                System.out.print("Opção inválida");
+                    System.out.print("Opção inválida");
                     break;
             }
 
@@ -78,13 +87,50 @@ public class exercicioFunções {
     }
 
     public static void imprimeN() {
+        System.out.print("Número: ");
+        int n = scanner.nextInt();
+        int cont = 0;
+        while (cont <= n) {
+            System.out.print(cont + " ");
+            cont++;
+        }
+
     }
 
     public static void nomes5() {
+        int cont = 0;
+        String[] nome = new String[5];
+        while (cont < 5) {
+            System.out.print(cont + 1 + "° Nome: ");
+            nome[cont] = scanner.next();
+            cont++;
+        }
+        // while para exibir os nomes obtidos
+        System.out.println("Nomes digitados");
+        cont = 0;
+        while (cont < 5) {
+            System.out.println(nome[cont]);
+            cont++;
 
+        }
     }
 
     public static void adicao() {
+        String resposta = "s";
+        while (!resposta.equalsIgnoreCase("n")) {
+            System.out.print("1° valor: ");
+            int n1 = scanner.nextInt();
+            System.out.print("2° valor: ");
+            int n2 = scanner.nextInt();
+
+            int soma = 0;
+            System.out.println(soma = n1 + n2);
+
+            System.out.println("Deseja continuar (S) ou encerrar (N)? ");
+            resposta = scanner.next();
+        }
+        System.out.println("Encerrando o programa...");
+
     }
 
     public static void pessoas() {
@@ -110,6 +156,13 @@ public class exercicioFunções {
     }
 
     public static void imparesN() {
+        System.out.print("Quantos número impares quer imprimir? ");
+        int impares = scanner.nextInt();
+
+        for (int i = 1; i <= impares; i++) {
+            System.out.println(2 * i - 1);
+
+        }
     }
 
     public static void tabuada() {
