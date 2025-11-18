@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import javax.security.sasl.SaslClientFactory;
 
 public class exercicioFunções {
 
@@ -10,6 +11,7 @@ public class exercicioFunções {
 
         int opcao;
         do {
+            System.out.println();
             System.out.println("Escolha uma opção abaixo: ");
             System.out.println("1: imprime100");
             System.out.println("2: imprimeN");
@@ -30,6 +32,7 @@ public class exercicioFunções {
             System.out.println("Para sair digite (0)");
             System.out.print("Qual opção? ");
             opcao = scanner.nextInt();
+            System.out.println();
 
             if (opcao < 0 || opcao > 16) {
                 System.out.println("Opção inválida! Digite entre 1 e 16, ou 0 para sair. ");
@@ -43,7 +46,7 @@ public class exercicioFunções {
                 case 2:
                     imprimeN();
                     break;
-                case 8, 9, 10, 11, 12, 13, 14, 15, 16:
+                case 13, 14, 15, 16:
                     System.out.println("\nFunções não implementadas ainda...");
                     break;
 
@@ -63,6 +66,23 @@ public class exercicioFunções {
                 case 7:
                     tabuada();
                     break;
+                case 8:
+                elevado();
+                break;
+                 case 9:
+                soma1N();
+                break;
+                case 10:
+                fibonacciFor();
+                break;
+
+                case 11:
+                fibonacciWhile();
+                break;
+
+                case 12:
+                criarArray();
+                break;
 
                 case 0:
                     System.out.print("Encerrando programa...");
@@ -176,18 +196,98 @@ public class exercicioFunções {
     }
 
     public static void elevado() {
+        System.out.print("Valor de X: ");
+        int x = scanner.nextInt();
+
+        System.out.print("Valor de Y: ");
+        int y = scanner.nextInt();
+        //quantas vezes você vai multiplicar x por ele mesmo
+
+        int resultado = 1;
+       for(int i = 1; i <= y; i++) {
+        
+        resultado = resultado * x;
+
+       }
+       System.out.println("Resultado: " + resultado);
+
+
     }
 
     public static void soma1N() {
+        System.out.print("Valor de parada? ");
+        int parada = scanner.nextInt();
+     int resultado = 0;
+        for (int i = 0; i < parada; i++) {
+            System.out.print("Valor de n: ");
+            int n = scanner.nextInt();
+            
+             resultado = resultado + n;
+        }
+       System.out.println("Resultado: " + resultado);
     }
 
     public static void fibonacciFor() {
+        System.out.print("Tamanho: ");
+        int n = scanner.nextInt();
+        int[] fib = new int[n];
+       
+       if (n > 0) {
+        fib[0] = 0;
+       }
+       if (n > 1) {
+        fib[1] = 1;
+       }
+        for(int i = 2; i < n; i++) {
+            fib[i] = fib[i-1] + fib[i-2];
+        }
+        for(int i = 1; i < n; i++) {
+            System.out.println(fib[i] + " ");
+        }
+        
     }
 
     public static void fibonacciWhile() {
+        System.out.println("Pressione ENTER para ver o próximo número de Fibonacci ou 'q' para sair. ");
+        System.out.println();
+
+        long a = 0;
+        long b = 1;
+        scanner.nextLine();
+        while (true) {
+            // while roda até que vc mandar ele sair
+            String resposta = scanner.nextLine();
+            
+            if(resposta.equalsIgnoreCase("q")) {
+                // se digitar q sai do programa
+                break;
+            }
+             System.out.println(a);
+
+            long c = a + b;
+            a = b;
+            b = c;
+
+        }
+        System.out.println("Saindo da função...");
+
+
     }
 
     public static void criarArray() {
+        System.out.print("Tamanho do vetor: ");
+        int n1 = scanner.nextInt();
+
+        int[] vetor1 = new int[n1];
+
+        for(int i = 0; i < n1; i++) {
+            System.out.print((i+1) + "° valor da posição: ");
+            vetor1[i] = scanner.nextInt();
+        } 
+        System.out.println("Percorrendo o array");
+        for(int i = 0; i < n1; i++) {
+            System.out.println(vetor1[i]);
+        }
     }
 
     public static void unirArrays() {
