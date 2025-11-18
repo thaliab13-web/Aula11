@@ -1,5 +1,7 @@
+import java.net.SocketPermission;
 import java.util.Scanner;
 import javax.security.sasl.SaslClientFactory;
+import javax.swing.SpringLayout;
 
 public class exercicioFunções {
 
@@ -46,9 +48,6 @@ public class exercicioFunções {
                 case 2:
                     imprimeN();
                     break;
-                case 13, 14, 15, 16:
-                    System.out.println("\nFunções não implementadas ainda...");
-                    break;
 
                 case 3:
                     nomes5();
@@ -67,22 +66,38 @@ public class exercicioFunções {
                     tabuada();
                     break;
                 case 8:
-                elevado();
-                break;
-                 case 9:
-                soma1N();
-                break;
+                    elevado();
+                    break;
+                case 9:
+                    soma1N();
+                    break;
                 case 10:
-                fibonacciFor();
-                break;
+                    fibonacciFor();
+                    break;
 
                 case 11:
-                fibonacciWhile();
-                break;
+                    fibonacciWhile();
+                    break;
 
                 case 12:
-                criarArray();
-                break;
+                    criarArray();
+                    break;
+
+                case 13:
+                    unirArrays();
+                    break;
+
+                case 14:
+                    palindromo();
+                    break;
+
+                case 15:
+                    primo();
+                    break;
+
+                case 16:
+                    perfeito();
+                    break;
 
                 case 0:
                     System.out.print("Encerrando programa...");
@@ -201,50 +216,49 @@ public class exercicioFunções {
 
         System.out.print("Valor de Y: ");
         int y = scanner.nextInt();
-        //quantas vezes você vai multiplicar x por ele mesmo
+        // quantas vezes você vai multiplicar x por ele mesmo
 
         int resultado = 1;
-       for(int i = 1; i <= y; i++) {
-        
-        resultado = resultado * x;
+        for (int i = 1; i <= y; i++) {
 
-       }
-       System.out.println("Resultado: " + resultado);
+            resultado = resultado * x;
 
+        }
+        System.out.println("Resultado: " + resultado);
 
     }
 
     public static void soma1N() {
         System.out.print("Valor de parada? ");
         int parada = scanner.nextInt();
-     int resultado = 0;
+        int resultado = 0;
         for (int i = 0; i < parada; i++) {
             System.out.print("Valor de n: ");
             int n = scanner.nextInt();
-            
-             resultado = resultado + n;
+
+            resultado = resultado + n;
         }
-       System.out.println("Resultado: " + resultado);
+        System.out.println("Resultado: " + resultado);
     }
 
     public static void fibonacciFor() {
         System.out.print("Tamanho: ");
         int n = scanner.nextInt();
         int[] fib = new int[n];
-       
-       if (n > 0) {
-        fib[0] = 0;
-       }
-       if (n > 1) {
-        fib[1] = 1;
-       }
-        for(int i = 2; i < n; i++) {
-            fib[i] = fib[i-1] + fib[i-2];
+
+        if (n > 0) {
+            fib[0] = 0;
         }
-        for(int i = 1; i < n; i++) {
+        if (n > 1) {
+            fib[1] = 1;
+        }
+        for (int i = 2; i < n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        for (int i = 1; i < n; i++) {
             System.out.println(fib[i] + " ");
         }
-        
+
     }
 
     public static void fibonacciWhile() {
@@ -257,12 +271,12 @@ public class exercicioFunções {
         while (true) {
             // while roda até que vc mandar ele sair
             String resposta = scanner.nextLine();
-            
-            if(resposta.equalsIgnoreCase("q")) {
+
+            if (resposta.equalsIgnoreCase("q")) {
                 // se digitar q sai do programa
                 break;
             }
-             System.out.println(a);
+            System.out.println(a);
 
             long c = a + b;
             a = b;
@@ -270,7 +284,6 @@ public class exercicioFunções {
 
         }
         System.out.println("Saindo da função...");
-
 
     }
 
@@ -280,26 +293,109 @@ public class exercicioFunções {
 
         int[] vetor1 = new int[n1];
 
-        for(int i = 0; i < n1; i++) {
-            System.out.print((i+1) + "° valor da posição: ");
+        for (int i = 0; i < n1; i++) {
+            System.out.print((i + 1) + "° valor da posição: ");
             vetor1[i] = scanner.nextInt();
-        } 
+        }
         System.out.println("Percorrendo o array");
-        for(int i = 0; i < n1; i++) {
+        for (int i = 0; i < n1; i++) {
             System.out.println(vetor1[i]);
         }
     }
 
     public static void unirArrays() {
+
+        int[] n1 = new int[7];
+        System.out.print("7 números separados por espaços:  ");
+        for (int i = 0; i < 7; i++) {
+            n1[i] = scanner.nextInt();
+        }
+        int[] n2 = new int[11];
+        System.out.print("11 números separados por espaços: ");
+        for (int i = 0; i < 11; i++) {
+            n2[i] = scanner.nextInt();
+        }
+
+        int[] n3 = new int[18];
+
+        for (int i = 0; i < 7; i++) {
+            n3[i] = n1[i];
+        }
+
+        for (int i = 0; i < 11; i++) {
+            n3[i + 7] = n2[i];
+        }
+        System.out.println("União dos Arrays: ");
+        for (int i = 0; i < 18; i++) {
+            System.out.print(n3[i] + " ");
+        }
+        System.out.println();
     }
 
     public static void palindromo() {
+
+        scanner.nextLine();
+
+        System.out.print("Digite um texto: ");
+        String texto = scanner.nextLine();
+
+        boolean ehPalindromo = true;
+
+        // Compara o inicio com o final
+        for (int i = 0; i < texto.length(); i++) {
+            if (texto.charAt(i) != texto.charAt(texto.length() - 1 - i)) {
+                // A letra da frente é diferente da letra de trás
+                ehPalindromo = false;
+                break;
+            }
+        }
+        if (ehPalindromo) {
+            System.out.println("É palindromo");
+        } else {
+            System.out.println("Não é palindromo");
+        }
+
     }
 
     public static void primo() {
+
+        System.out.print("Número: ");
+        int n1 = scanner.nextInt();
+
+        int cont = 0;
+
+        for (int i = 1; i <= n1; i++) {
+            if (n1 % i == 0) {
+                // testa se o numero é divisil por 1
+                cont++; // conta quantos divisores tem
+            }
+        }
+        if (cont == 2) {
+            System.out.println("É primo");
+        } else {
+            System.out.println("Não é primo");
+        }
+
     }
 
     public static void perfeito() {
+
+        System.out.println("Número: ");
+        int n1 = scanner.nextInt();
+
+        int soma = 0;
+
+        for (int i = 1; i < n1; i++) {
+            if (n1 % i == 0) {
+                soma += i;
+            }
+        }
+        if (soma == n1) {
+            System.out.println("é perfeito");
+        } else {
+            System.out.println("Não é perfeito");
+        }
+
     }
 
 }
