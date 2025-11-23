@@ -265,6 +265,7 @@ public class exercicioFunções {
         System.out.println("Pressione ENTER para ver o próximo número de Fibonacci ou 'q' para sair. ");
         System.out.println();
 
+        // long aguenta mais números 
         long a = 0;
         long b = 1;
         scanner.nextLine();
